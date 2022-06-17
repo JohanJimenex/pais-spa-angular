@@ -9,7 +9,7 @@ import { VerPaisComponent } from './pais/pages/ver-pais/ver-pais.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: "pais",
     component: PorPaisComponent,
     pathMatch: "full" //esto es para que el url se muestre completo y evite conflicto con otras ruta
   },
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: ""
+    redirectTo: "pais"
     // redirectTo: 404Component
   }
 ];

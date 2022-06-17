@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +13,7 @@ import { AppRoutingModule } from '../app-routing.module';
     SidebarComponent
   ],
   imports: [
-    AppRoutingModule,
+    RouterModule,
     CommonModule
   ]
 })

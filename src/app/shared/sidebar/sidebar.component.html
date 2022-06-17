@@ -1,7 +1,10 @@
-<h2>Categorias</h2>
+<h2>Categorías</h2>
 <hr>
 <ul class="list-group">
-  <li class="list-group-item active" routerLink="">Buscar Pais</li>
-  <li class="list-group-item" routerLink="region">Región</li>
-  <li class="list-group-item" routerLink="capital">Capital</li>
+  <a class="list-group-item active" routerLink="pais" routerLinkActive="active">
+    <!-- [routerLinkActiveOptions]="{exact: true}" estoe s un atributo -->
+    Buscar País
+  </a>
+  <a class="list-group-item  " routerLink="region" routerLinkActive="active">Región</a>
+  <a class="list-group-item  " routerLink="capital" routerLinkActive="active">Capital</a>
 </ul>
