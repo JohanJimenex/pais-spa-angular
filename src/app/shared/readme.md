@@ -1,0 +1,1 @@
+En esta carpeta se pondran todos los modulos que se comparten entre paginas, es una buena practica
