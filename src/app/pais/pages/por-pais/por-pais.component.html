@@ -24,8 +24,8 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>#</th>
           <th>Bandera</th>
+          <th>Nombre del país</th>
           <th>Nombre</th>
           <th>Población</th>
           <th>Información</th>
@@ -34,8 +34,10 @@
       <tbody>
 
         <tr *ngFor="let pais of arrPaises">
+          <td style="width: 10px;" class="text-center">
+            <img [src]="pais.flags.png" class="w-75">
+          </td>
           <td>{{pais.name}}</td>
-          <td> <img [src]="pais.flags.png" class="w-25"></td>
           <td>nombre</td>
           <td>población</td>
           <td>
