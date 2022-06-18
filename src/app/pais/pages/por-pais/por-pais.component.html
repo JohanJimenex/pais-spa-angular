@@ -16,7 +16,7 @@
 
 <hr>
 
-<div class="alert alert-warning">No se encontraron resultados para {{inputBuscarPais}} </div>
+<div class="alert alert-warning" *ngIf="arrPaises.length == 0">No se encontraron resultados para {{inputBuscarPais}} </div>
 
 <div class="row">
   <div class="col">
@@ -25,8 +25,8 @@
       <thead>
         <tr>
           <th>Bandera</th>
-          <th>Nombre del país</th>
-          <th>Nombre</th>
+          <th>País</th>
+          <th>Capital</th>
           <th>Población</th>
           <th>Información</th>
         </tr>
@@ -38,8 +38,8 @@
             <img [src]="pais.flags.png" class="w-75">
           </td>
           <td>{{pais.name}}</td>
-          <td>nombre</td>
-          <td>población</td>
+          <td>{{pais.capital}}</td>
+          <td>{{pais.population | number}}</td>
           <td>
             <a href=""> aqui va un router link </a>
           </td>

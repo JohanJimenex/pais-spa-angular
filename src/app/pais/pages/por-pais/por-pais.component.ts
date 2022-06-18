@@ -26,6 +26,5 @@ export class PorPaisComponent {
 
     console.log(this.arrPaises);
 
-
   }
 }
