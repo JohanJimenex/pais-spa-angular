@@ -16,7 +16,8 @@
 
 <hr>
 
-<div class="alert alert-warning" *ngIf="arrPaises.length == 0">No se encontraron resultados para {{inputBuscarPais}} </div>
+<div *ngIf="hayError == true" class="alert alert-warning">No se encontraron resultados para
+  "{{inputBuscarPais}}" </div>
 
 <div class="row">
   <div class="col">

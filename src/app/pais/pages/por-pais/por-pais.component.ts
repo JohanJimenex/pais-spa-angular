@@ -17,6 +17,10 @@ export class PorPaisComponent {
     return this.paisService.arrPaises;
   }
 
+  get hayError(): boolean {
+    return this.paisService.hayError;
+  }
+
 
   buscar(): void {
 
