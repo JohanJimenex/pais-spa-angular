@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IObjResponse } from '../interfaces/pais.interface';
-
-
-
+import { catchError, Observable, of } from 'rxjs';
+import { IPais } from '../interfaces/pais.interface';
 
 
 @Injectable({
@@ -13,11 +10,11 @@ import { IObjResponse } from '../interfaces/pais.interface';
 export class PaisService {
 
   private _urlBase: string = "https://restcountries.com/v2/";
-  private _arrPaises: IObjResponse[] = [];
+  private _arrPaises: IPais[] = [];
   public hayError: boolean = false;
 
 
-  get arrPaises(): IObjResponse[] {
+  get arrPaises(): IPais[] {
     return this._arrPaises;
   }
 
@@ -27,7 +24,7 @@ export class PaisService {
 
     this.hayError = false;
 
-    this.http.get<IObjResponse[]>(`${this._urlBase}/name/${query}`)
+    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`)
       .subscribe({
         next: (resp) => {
 
@@ -40,13 +37,11 @@ export class PaisService {
         }
       })
 
-    // Otra forma anterior:
-    // buscarPais(query: string): Observable<IObjResponse[]> {
-    // return this.http.get<IObjResponse[]>(`${this._urlBase}/name/${query}`);
+
 
     //Esta forma está deprecada:
-    // this.http.get<IObjResponse[]>(`${this._urlBase}/name/${query}`)
-    //   .subscribe((resp: IObjResponse[]) => {
+    // this.http.get<IPais[]>(`${this._urlBase}/name/${query}`)
+    //   .subscribe((resp: IPais[]) => {
     //     this._arrPaises = resp;
     //     this.hayError = true;
     //   }, (err) => {
@@ -57,5 +52,15 @@ export class PaisService {
 
 
   }
+
+  // Otra forma nueva de Fernando video 107:
+  // buscarPais(query: string): Observable<any> {
+  //   return this.http.get(`${this._urlBase}/name/${query}`)
+  //     .pipe(//permite ejcutar operadores de rxjs
+  //     // operador cathError,es un funcion se ejecuta si hay un error, el of transforma lo que sea en un observable (promesa)
+  //     //eje: un arreglo con un string,(recuerda luego ejecutar el subscribe(resp=>{etc})) en el otro script
+  //       catchError(err => of(['Klk hay un error mio']))
+  //     );
+  // }
 
 }

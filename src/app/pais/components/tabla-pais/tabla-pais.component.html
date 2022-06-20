@@ -1,0 +1,36 @@
+<table class="table table-hover">
+
+  <thead>
+    <tr>
+      <th>Bandera</th>
+      <th class="text-center">País</th>
+      <th>Capital</th>
+      <th>Población</th>
+      <th>Información</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+
+    <tr *ngFor="let pais of arrPaises">
+      <td style="width: 10px;" class="text-center">
+        <img [src]="pais.flags.png" class="w-75">
+      </td>
+      <td>{{pais.name}}</td>
+      <td>{{pais.capital}}</td>
+      <td>{{pais.population | number}}</td>
+      <td class="text-center">
+        <!-- Con los corchetes podemos mandar un arreglo con opciones, para  -->
+
+        <a [routerLink]="['/pais', pais.alpha2Code]">
+
+          <button class="btn btn-outline-primary">
+            <i class="bi bi-eye"></i>
+          </button>
+
+        </a>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

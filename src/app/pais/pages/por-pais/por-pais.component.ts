@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
-import { IObjResponse } from '../../interfaces/pais.interface';
+import { IPais } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
@@ -13,7 +13,7 @@ export class PorPaisComponent {
 
   inputBuscarPais: string = "";// se llena en vivo desde el html
 
-  get arrPaises(): IObjResponse[] {
+  get arrPaises(): IPais[] {
     return this.paisService.arrPaises;
   }
 
@@ -21,14 +21,17 @@ export class PorPaisComponent {
     return this.paisService.hayError;
   }
 
-
   buscar(): void {
 
     if (this.inputBuscarPais.trim().length == 0) { return; }
 
     this.paisService.buscarPais(this.inputBuscarPais)
 
-    console.log(this.arrPaises);
+    // let resp = this.paisService.buscarPais(this.inputBuscarPais)
+    // resp.subscribe(resp => {
+    //   console.log(resp);
+
+    // });
 
   }
 }

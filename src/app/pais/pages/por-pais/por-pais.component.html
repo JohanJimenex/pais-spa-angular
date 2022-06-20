@@ -3,51 +3,20 @@
 
 <div class="row">
   <div class="col">
-    <form action="" autocomplete="off" (ngSubmit)="buscar()" class="input-group mb-3">
-
-      <input type="text" name="termino" placeholder="Ejemplo: República Dominicana" class="form-control"
-        [(ngModel)]="inputBuscarPais">
-
-      <button type="submit" class="input-group-text btn btn-primary">Buscar</button>
-
-    </form>
+    <app-input-pais [inputBuscarPais]="inputBuscarPais"></app-input-pais>
   </div>
 </div>
 
 <hr>
 
-<div *ngIf="hayError == true" class="alert alert-warning">No se encontraron resultados para
-  "{{inputBuscarPais}}" </div>
+<div *ngIf="hayError == true" class="alert alert-warning">
+  No se encontraron resultados para "{{inputBuscarPais}}"
+</div>
 
 <div class="row">
   <div class="col">
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Bandera</th>
-          <th>País</th>
-          <th>Capital</th>
-          <th>Población</th>
-          <th>Información</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr *ngFor="let pais of arrPaises">
-          <td style="width: 10px;" class="text-center">
-            <img [src]="pais.flags.png" class="w-75">
-          </td>
-          <td>{{pais.name}}</td>
-          <td>{{pais.capital}}</td>
-          <td>{{pais.population | number}}</td>
-          <td>
-            <a href=""> aqui va un router link </a>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
+    <!-- Le mandamos a un @Input arrPaises los datos de la variable arrPaises de por pais component -->
+    <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
 
   </div>
 </div>
