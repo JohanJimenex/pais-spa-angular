@@ -9,7 +9,7 @@
       <th>Información</th>
     </tr>
   </thead>
-  
+
   <tbody>
 
     <tr *ngFor="let pais of arrPaises">
@@ -24,9 +24,7 @@
 
         <a [routerLink]="['/pais', pais.alpha2Code]">
 
-          <button class="btn btn-outline-primary">
-            <i class="bi bi-eye"></i>
-          </button>
+          <i class="bi bi-eye-fill"></i>
 
         </a>
       </td>

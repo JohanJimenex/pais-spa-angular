@@ -8,7 +8,9 @@ import { PaisService } from '../../services/pais.service';
 })
 export class TablaPaisComponent {
 
-  //esto se llena en vivo desde cualqueir componente que queira ebviarle datos llamandolo como atributo [arrPaises]="5+5"
+  //esto se llena en vivo desde cualquier html que quiera enviarle datos llamandolo como atributo [arrPaises]="5+5"
   @Input() arrPaises: IPais[] = [];
+
+  //pero pudieramos injectar el servicio y funciona
 
 }

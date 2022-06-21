@@ -11,7 +11,6 @@ export class PorPaisComponent {
   //injecccion de dependencia
   constructor(private paisService: PaisService) { }
 
-  inputBuscarPais: string = "";// se llena en vivo desde el html
 
   get arrPaises(): IPais[] {
     return this.paisService.arrPaises;
@@ -21,11 +20,11 @@ export class PorPaisComponent {
     return this.paisService.hayError;
   }
 
-  buscar(): void {
+  buscar(palabra: string): void {
 
-    if (this.inputBuscarPais.trim().length == 0) { return; }
+    if (palabra.trim().length == 0) { return; }
 
-    this.paisService.buscarPais(this.inputBuscarPais)
+    this.paisService.buscarPais(palabra)
 
     // let resp = this.paisService.buscarPais(this.inputBuscarPais)
     // resp.subscribe(resp => {
@@ -34,4 +33,13 @@ export class PorPaisComponent {
     // });
 
   }
+
+
+  sugerencias(palabra: string): void {
+    //TODO: crear sugerencia
+
+    console.log(palabra);
+    
+  }
+
 }

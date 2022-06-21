@@ -1,1 +1,24 @@
-<p>por-capital works!</p>
+<h1>Por Capital</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!-- Esto es un eventEmiter @output personalizado, y enviamos la palabra al metodo buscar()-->
+    <app-input-pais (onSearch)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Ejemplo: Santo Domingo">
+    </app-input-pais>
+  </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError == true" class="alert alert-warning">
+  No se encontraron resultados.
+</div>
+
+<div class="row">
+  <div class="col">
+    <!-- Le mandamos a un @Input arrPaises los datos de la variable arrPaises de por pais component -->
+    <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
+
+  </div>
+</div>

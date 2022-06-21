@@ -63,4 +63,23 @@ export class PaisService {
   //     );
   // }
 
+  buscarPorCapital(query: string): void {
+
+    this.hayError = false;
+
+    this.http.get<IPais[]>(`${this._urlBase}/capital/${query}`)
+      .subscribe(
+        {
+          next: (resp) => {
+            console.log(resp);
+
+            this._arrPaises = resp;
+          },
+          error: (err) => {
+            // este codigo se eejcuta si  solo existe un error
+            this.hayError = true;
+          }
+        }
+      )
+  }
 }

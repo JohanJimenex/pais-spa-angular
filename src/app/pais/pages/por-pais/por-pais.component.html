@@ -3,14 +3,16 @@
 
 <div class="row">
   <div class="col">
-    <app-input-pais [inputBuscarPais]="inputBuscarPais"></app-input-pais>
+    <!-- Esto es un eventEmiter @output personalizado, y enviamos la palabra al metodo buscar()-->
+    <!-- la propiedad placehalder e suna variable string en el compomnente -->
+    <app-input-pais (onSearch)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Ejemplo: República Dominicana"></app-input-pais>
   </div>
 </div>
 
 <hr>
 
 <div *ngIf="hayError == true" class="alert alert-warning">
-  No se encontraron resultados para "{{inputBuscarPais}}"
+  No se encontraron resultados.
 </div>
 
 <div class="row">
