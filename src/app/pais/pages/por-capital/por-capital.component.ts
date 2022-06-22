@@ -31,11 +31,4 @@ export class PorCapitalComponent {
 
   }
 
-
-  sugerencias(palabra: string): void {
-    //TODO: crear sugerencia
-
-    console.log(palabra);
-
-  }
 }
