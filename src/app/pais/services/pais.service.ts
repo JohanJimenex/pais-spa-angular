@@ -82,4 +82,24 @@ export class PaisService {
         }
       )
   }
+
+  buscarPorCodigo(idPais: string): void {
+
+    this.hayError = false;
+
+    this.http.get<IPais[]>(`${this._urlBase}/alpha/${idPais}`)
+      .subscribe(
+        {
+          next: (resp) => {
+            console.log(resp);
+
+            this._arrPaises = resp;
+          },
+          error: (err) => {
+            // este codigo se eejcuta si  solo existe un error
+            this.hayError = true;
+          }
+        }
+      )
+  }
 }
