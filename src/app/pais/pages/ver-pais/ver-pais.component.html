@@ -1,6 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col">klk</div>
-    <div class="col">con klk</div>
+<div *ngIf="arrPaises.length == 0; else divPais" class="alert alert-info text-center">
+  Cargando resultados...
+
+  <div class="d-flex justify-content-center w-25 m-auto">
+    <img src="../../../../assets/loading.gif" class="w-25" alt="cargando">
   </div>
+
 </div>
+
+<ng-template #divPais>
+
+  <div #divPais class="row">
+    <div class="col-12">
+      <h1>País: <small>{{arrPaises[0].name}}</small></h1>
+    </div>
+
+    <div class="col-4">
+      <h3>Bandera</h3>
+      <img [src]="arrPaises[0].flag" class="img-thumbnail">
+    </div>
+
+    <div class="col-4">
+      <h3>Información</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong> Población:</strong> {{arrPaises[0].population | number }}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</ng-template>

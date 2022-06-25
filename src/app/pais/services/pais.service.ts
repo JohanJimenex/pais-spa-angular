@@ -71,8 +71,6 @@ export class PaisService {
       .subscribe(
         {
           next: (resp) => {
-            console.log(resp);
-
             this._arrPaises = resp;
           },
           error: (err) => {
@@ -86,14 +84,16 @@ export class PaisService {
   buscarPorCodigo(idPais: string): void {
 
     this.hayError = false;
+    this._arrPaises = [];// lo reinicio para usar el loading
 
-    this.http.get<IPais[]>(`${this._urlBase}/alpha/${idPais}`)
+    //ojo esto solo devuelve u solo objeto , no un arreglo
+    this.http.get<IPais>(`${this._urlBase}/alpha/${idPais}`)
       .subscribe(
         {
           next: (resp) => {
             console.log(resp);
 
-            this._arrPaises = resp;
+            this._arrPaises.push(resp);
           },
           error: (err) => {
             // este codigo se eejcuta si  solo existe un error
