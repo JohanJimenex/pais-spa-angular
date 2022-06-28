@@ -16,14 +16,11 @@ export class VerPaisComponent implements OnInit {
     private paisServices: PaisService
   ) { }
 
-
   get arrPaises(): IPais[] {
     return this.paisServices.arrPaises;
   }
 
-
   ngOnInit(): void {
-
 
     this.activatedRouter.params.subscribe((urlParams: any) => {
       this.paisServices.buscarPorCodigo(urlParams.id);

@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { query } from '@angular/animations';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { IPais } from '../interfaces/pais.interface';
 
@@ -13,6 +15,9 @@ export class PaisService {
   private _arrPaises: IPais[] = [];
   public hayError: boolean = false;
 
+  params = new HttpParams()
+    .set("fields", "flags,flag,name,capital,population,translations,alpha2Code,region,subregion");
+
 
   get arrPaises(): IPais[] {
     return this._arrPaises;
@@ -24,9 +29,9 @@ export class PaisService {
 
     this.hayError = false;
 
-    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`)
+    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`, { params: this.params })
       .subscribe({
-        next: (resp) => {
+        next: (resp: IPais[]) => {
 
           this._arrPaises = resp;
 
@@ -67,10 +72,10 @@ export class PaisService {
 
     this.hayError = false;
 
-    this.http.get<IPais[]>(`${this._urlBase}/capital/${query}`)
+    this.http.get<IPais[]>(`${this._urlBase}/capital/${query}`, { params: this.params })
       .subscribe(
         {
-          next: (resp) => {
+          next: (resp: IPais[]) => {
             this._arrPaises = resp;
           },
           error: (err) => {
@@ -87,13 +92,34 @@ export class PaisService {
     this._arrPaises = [];// lo reinicio para usar el loading
 
     //ojo esto solo devuelve u solo objeto , no un arreglo
-    this.http.get<IPais>(`${this._urlBase}/alpha/${idPais}`)
+    this.http.get<IPais>(`${this._urlBase}alpha/${idPais}`, { params: this.params })
       .subscribe(
         {
-          next: (resp) => {
-            console.log(resp);
+          next: (resp: IPais) => {
 
             this._arrPaises.push(resp);
+          },
+          error: (err) => {
+            // este codigo se eejcuta si  solo existe un error
+            this.hayError = true;
+          }
+        }
+      )
+  }
+
+  buscarPorRegion(query: string): void {
+
+    this.hayError = false;
+    this._arrPaises = [];// lo reinicio para usar el loading
+
+    //ojo esto solo devuelve u solo objeto , no un arreglo
+    this.http.get<IPais[]>(`${this._urlBase}regionalbloc/${query}`, { params: this.params })
+      .subscribe(
+        {
+          next: (resp: IPais[]) => {
+            console.log(resp);
+
+            this._arrPaises = resp;
           },
           error: (err) => {
             // este codigo se eejcuta si  solo existe un error

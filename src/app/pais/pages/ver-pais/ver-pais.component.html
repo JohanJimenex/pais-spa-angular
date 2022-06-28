@@ -9,19 +9,27 @@
 
 <ng-template #divPais>
 
-  <div #divPais class="row">
+  <div class="row">
     <div class="col-12">
       <h1>País: <small>{{arrPaises[0].name}}</small></h1>
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-4 col-12">
       <h3>Bandera</h3>
       <img [src]="arrPaises[0].flag" class="img-thumbnail">
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-6 col-12">
       <h3>Información</h3>
       <ul class="list-group">
+        <li class="list-group-item">
+          <strong> Capital:</strong> {{arrPaises[0].capital}}
+        </li>
+        <li class="list-group-item">
+          <strong> Región:</strong> {{arrPaises[0].region}}
+          <br>
+          <strong> Subregión:</strong> {{arrPaises[0].subregion}}
+        </li>
         <li class="list-group-item">
           <strong> Población:</strong> {{arrPaises[0].population | number }}
         </li>
@@ -29,5 +37,15 @@
     </div>
 
   </div>
+  <div class="row">
+    <div class="col">
+      <h5>Traducciones:</h5>
+      <span class="badge bg-dark me-1">{{arrPaises[0].translations.es}}</span>
+      <span class="badge bg-dark me-1">{{arrPaises[0].translations.de}}</span>
+      <span class="badge bg-dark me-1">{{arrPaises[0].translations.fr}}</span>
+      <span class="badge bg-dark me-1">{{arrPaises[0].translations.ja}}</span>
+    </div>
+  </div>
+
 
 </ng-template>
