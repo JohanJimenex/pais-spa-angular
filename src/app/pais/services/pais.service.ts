@@ -34,7 +34,7 @@ export class PaisService {
 
     this.hayError = false;
 
-    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`, { params: this.params })
+    this.http.get<IPais[]>(`${this._urlBase}name/${query}`, { params: this.params })
       .subscribe({
         next: (resp: IPais[]) => {
 
@@ -78,7 +78,7 @@ export class PaisService {
 
     this.hayError = false;
 
-    this.http.get<IPais[]>(`${this._urlBase}/capital/${query}`, { params: this.params })
+    this.http.get<IPais[]>(`${this._urlBase}capital/${query}`, { params: this.params })
       .subscribe(
         {
           next: (resp: IPais[]) => {
@@ -140,7 +140,7 @@ export class PaisService {
 
     this.arrPaisesSugeridos = [];
 
-    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`, { params: this.params })
+    this.http.get<IPais[]>(`${this._urlBase}name/${query}`, { params: this.params })
       .subscribe((resp: IPais[]) => {
 
         this.arrPaisesSugeridos = resp.splice(0, 5);
