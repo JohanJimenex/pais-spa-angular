@@ -11,7 +11,6 @@
         (onDebounce)="mostrarSugerencias($event)">
       </app-input-pais>
 
-
       <ul class="list-group" *ngIf="arrPaisesSugeridos.length != 0">
         <small class="mb-1">Sugerencias: </small>
         <li class="list-group-item list-group-item-action btn" *ngFor="let pais of arrPaisesSugeridos"
