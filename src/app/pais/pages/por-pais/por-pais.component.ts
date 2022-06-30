@@ -34,12 +34,16 @@ export class PorPaisComponent {
 
   }
 
+  get arrPaisesSugeridos(): IPais[] {
+    return this.paisService.arrPaisesSugeridos;
+  }
 
-  sugerencias(palabra: string): void {
+  mostrarSugerencias(palabra: string): void {
     //TODO: crear sugerencia
 
-    console.log(palabra);
-    
+    this.paisService.buscarPaisSugeridos(palabra);
+
+
   }
 
 }

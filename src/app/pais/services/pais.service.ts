@@ -13,7 +13,9 @@ export class PaisService {
 
   private _urlBase: string = "https://restcountries.com/v2/";
   private _arrPaises: IPais[] = [];
+
   public hayError: boolean = false;
+  public arrPaisesSugeridos: IPais[] = [];
 
   params = new HttpParams()
     .set("fields", "flags,flag,name,capital,population,translations,alpha2Code,region,subregion");
@@ -26,6 +28,9 @@ export class PaisService {
   constructor(private http: HttpClient) { }
 
   buscarPais(query: string): void {
+
+    this._arrPaises = [];
+    this.arrPaisesSugeridos = [];
 
     this.hayError = false;
 
@@ -69,6 +74,7 @@ export class PaisService {
   // }
 
   buscarPorCapital(query: string): void {
+    this._arrPaises = [];
 
     this.hayError = false;
 
@@ -128,4 +134,19 @@ export class PaisService {
         }
       )
   }
+
+
+  buscarPaisSugeridos(query: string): void {
+
+    this.arrPaisesSugeridos = [];
+
+    this.http.get<IPais[]>(`${this._urlBase}/name/${query}`, { params: this.params })
+      .subscribe((resp: IPais[]) => {
+
+        this.arrPaisesSugeridos = resp.splice(0, 5);
+
+      })
+  }
+
+
 }

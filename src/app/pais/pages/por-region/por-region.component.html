@@ -1,23 +1,27 @@
-<h2>Buscar por región </h2>
-<small *ngIf="regionSeleccionada != ''">Región seleccionada: {{regionSeleccionada}} </small>
-<hr>
+<div class="animate__animated animate__fadeIn">
 
-<div class="row">
-  <div class="col">
-    <!-- diferentes formas de agregar claes por condiciones -->
-    <!-- [ngClass]="{'btn-dark': region == regionSeleccionada, 'btn-outline-dark': region!= regionSeleccionada}" -->
-    <!-- [class]="(region == regionSeleccionada) ? 'btn me-1 btn-dark' : 'btn me-1 btn-outline-dark'" -->
-    <!-- class="btn btn-outline-dark me-1" [class.btn-selected]="region == regionSeleccionada" -->
-    <!-- [class]="obtenerClaseCSS(region)" metodo que devuelve un string con la clase -->
-    <button *ngFor="let region of arrRegiones" [class]="obtenerClaseCSS(region)" type="button"
-      (click)="buscarPaisPorRegion(region)">
-      {{region}}
-    </button>
-  </div>
-</div>
+  <h2>Buscar por región </h2>
+  <small *ngIf="regionSeleccionada != ''">Región seleccionada: {{regionSeleccionada}} </small>
+  <hr>
 
-<div class="row">
-  <div class="col">
-    <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
+  <div class="row">
+    <div class="col">
+      <!-- diferentes formas de agregar claes por condiciones -->
+      <!-- [ngClass]="{'btn-dark': region == regionSeleccionada, 'btn-outline-dark': region!= regionSeleccionada}" -->
+      <!-- [class]="(region == regionSeleccionada) ? 'btn me-1 btn-dark' : 'btn me-1 btn-outline-dark'" -->
+      <!-- class="btn btn-outline-dark me-1" [class.btn-selected]="region == regionSeleccionada" -->
+      <!-- [class]="obtenerClaseCSS(region)" metodo que devuelve un string con la clase -->
+      <button *ngFor="let region of arrRegiones" [class]="obtenerClaseCSS(region)" type="button"
+        (click)="buscarPaisPorRegion(region)">
+        {{region}}
+      </button>
+    </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
+    </div>
+  </div>
+
 </div>

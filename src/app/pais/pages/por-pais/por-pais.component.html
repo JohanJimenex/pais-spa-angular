@@ -1,24 +1,40 @@
-<h1>Por País</h1>
-<hr>
+<div class="animate__animated animate__fadeIn">
 
-<div class="row">
-  <div class="col">
-    <!-- Esto es un eventEmiter @output personalizado, y enviamos la palabra al metodo buscar()-->
-    <!-- la propiedad placehalder e suna variable string en el compomnente -->
-    <app-input-pais (onSearch)="buscar($event)" placeholder="Ejemplo: República Dominicana"></app-input-pais>
+  <h1>Por País</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <!-- Esto es un eventEmiter @output personalizado, y enviamos la palabra al metodo buscar()-->
+      <!-- la propiedad placehalder e suna variable string en el compomnente -->
+      <app-input-pais (onSearch)="buscar($event)" placeholder="Ejemplo: República Dominicana"
+        (onDebounce)="mostrarSugerencias($event)">
+      </app-input-pais>
+
+
+      <ul class="list-group" *ngIf="arrPaisesSugeridos.length != 0">
+        <small class="mb-1">Sugerencias: </small>
+        <li class="list-group-item list-group-item-action btn" *ngFor="let pais of arrPaisesSugeridos"
+          (click)="buscar(pais.name)"> {{pais.name}}
+        </li>
+      </ul>
+
+    </div>
+    
   </div>
-</div>
 
-<hr>
+  <hr>
 
-<div *ngIf="hayError == true" class="alert alert-warning">
-  No se encontraron resultados.
-</div>
-
-<div class="row">
-  <div class="col">
-    <!-- Le mandamos a un @Input arrPaises los datos de la variable arrPaises de por pais component -->
-    <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
-
+  <div *ngIf="hayError == true" class="alert alert-warning">
+    No se encontraron resultados.
   </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- Le mandamos a un @Input arrPaises los datos de la variable arrPaises de por pais component -->
+      <app-tabla-pais [arrPaises]="arrPaises"></app-tabla-pais>
+
+    </div>
+  </div>
+
 </div>
